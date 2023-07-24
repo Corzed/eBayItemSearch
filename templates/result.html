@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eBay Item Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-item {
+            border-bottom: 1px solid #ced4da;
+            padding: 20px 0;
+        }
+
+        /* Add a gray line to the first item */
+        .result-item:first-child {
+            border-top: 1px solid #ced4da;
+        }
+
+        .result-item strong {
+            display: block;
+            font-size: 18px;
+        }
+
+        .result-item .link-text {
+            color: #007bff;
+            text-decoration: none;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* Number of lines to show before truncating */
+            -webkit-box-orient: vertical;
+            margin-bottom: 5px; /* Add margin only between link and title */
+        }
+
+        .result-item .link-text:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-button a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>eBay Item Search Results</h1>
+        <div class="result-container">
+            <h2>Search Results for "{{ item_name }}"</h2>
+            <p>Average price of {{ item_name }} on eBay is ${{ "%.2f"|format(average_price) }}</p>
+
+            <div class="result-items">
+                {% for item in potential_profitable_items %}
+                    <div class="result-item">
+                        <strong>Price:</strong> ${{ "%.2f"|format(item.price) }}<br>
+                        <strong>Title:</strong> {{ item.title }}<br>
+                        <strong>Condition:</strong> {{ item.condition }}<br>
+                        <strong>Seller Rating:</strong> {{ item.seller_rating }}<br>
+                        <strong>Shipping Info:</strong> {{ item.shipping_info }}<br>
+                        <strong>Link:</strong> <a href="{{ item.link }}" class="link-text" target="_blank">{{ item.link }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="back-button">
+                <a href="/">Back to Search</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
