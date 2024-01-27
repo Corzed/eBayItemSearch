@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>eBay Item Search</title>
+    <title>eBay Item Flipper</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -81,7 +81,7 @@
     </style>
 </head>
 <body>
-    <h1>eBay Item Search</h1>
+    <h1>eBay Item Flipper</h1>
     <form method="POST" onsubmit="showLoading()">
         <div class="form-group">
             <label for="item_name">Item Name:</label>
@@ -89,17 +89,17 @@
         </div>
 
         <div class="form-group">
+            <label for="price_range_percentage">% Profit: </label>
+            <input type="number" id="price_range_percentage" name="price_range_percentage" class="form-control" value="20" required>
+        </div>
+
+        <div class="form-group">
             <label for="page_limit">Number of Pages to Check:</label>
-            <input type="number" id="page_limit" name="page_limit" class="form-control" value="30" required>
+            <input type="number" id="page_limit" name="page_limit" class="form-control" value="10" required>
         </div>
 
         <div class="form-group">
-            <label for="price_range_percentage">Price Range Percentage:</label>
-            <input type="number" id="price_range_percentage" name="price_range_percentage" class="form-control" value="10" required>
-        </div>
-
-        <div class="form-group">
-            <label for="keywords">Keywords:</label>
+            <label for="keywords">Keywords (Separated by Comma):</label>
             <input type="text" id="keywords" name="keywords" class="form-control">
         </div>
 
